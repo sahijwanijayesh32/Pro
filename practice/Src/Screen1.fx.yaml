@@ -1,0 +1,195 @@
+Screen1 As screen:
+
+    Button1 As button:
+        Height: =63
+        OnSelect: |-
+            =ClearCollect(CityPopulations, {City:"London", Country:"United Kingdom", Population:8615000}, {City:"Berlin",
+             Country:"Germany", Population:3562000}, {City:"Madrid",
+             Country:"Spain", Population:3165000}, {City:"Rome",
+             Country:"Italy", Population:2874000}, {City:"Paris",
+             Country:"France", Population:2273000}, {City:"Hamburg",
+             Country:"Germany", Population:1760000}, {City:"Barcelona",
+             Country:"Spain", Population:1602000}, {City:"Munich",
+             Country:"Germany", Population:1494000}, {City:"Milan",
+             Country:"Italy", Population:1344000})
+        Text: ="Button"
+        Width: =226
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        DelayItemLoading: =true
+        Items: =Filter(CityPopulations,Population>=Slider1.Value)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =104
+        X: =40
+        Y: =148
+        ZIndex: =2
+
+        Title1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.City
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 173
+            X: =103
+            Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle1.Size * 1.8)) / 2
+            ZIndex: =2
+
+        Subtitle1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Country
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title1.Width
+            X: =Title1.X
+            Y: =Title1.Y + Title1.Height
+            ZIndex: =3
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =5
+
+        Rectangle1 As rectangle:
+            Height: =Parent.TemplateHeight - Separator1.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =6
+
+        Label1 As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Population
+            X: =103
+            Y: =64
+            ZIndex: =7
+
+    Label3 As label:
+        Text: ="Population"
+        X: =993
+        Y: =40
+        ZIndex: =3
+
+    Slider1 As slider:
+        Max: =Max(CityPopulations,Population)
+        Min: =Min(CityPopulations,Population)
+        X: =958
+        Y: =94
+        ZIndex: =4
+
+    City As label:
+        Height: =38
+        Text: ="City"
+        Width: =253
+        X: =904
+        Y: =163
+        ZIndex: =5
+
+    City_Dropdown As dropdown:
+        Items: =CityPopulations.City
+        OnChange: =Set(varRecord, LookUp(CityPopulations, City=Self.SelectedText.'data-ADB4D7A662F548B49FAC2B986E348A1BCity'))
+        X: =904
+        Y: =201
+        ZIndex: =6
+
+    Label5 As label:
+        Text: ="country"
+        X: =904
+        Y: =269
+        ZIndex: =7
+
+    TextInput1 As text:
+        Default: =varRecord.Country
+        X: =904
+        Y: =327
+        ZIndex: =8
+
+    Label6 As label:
+        Text: ="City"
+        X: =904
+        Y: =393
+        ZIndex: =9
+
+    TextInput2 As text:
+        Default: =varRecord.City
+        X: =893
+        Y: =433
+        ZIndex: =10
+
+    Label7 As label:
+        Text: ="Population"
+        X: =893
+        Y: =509
+        ZIndex: =11
+
+    TextInput3 As text:
+        Default: =varRecord.Population
+        X: =904
+        Y: =585
+        ZIndex: =12
+
+    Button2 As button:
+        OnSelect: |-
+            =Patch(CityPopulations, varRecord, {Country: TextInput1.Text, City: TextInput2, Population: Value(TextInput3.Text)})
+        Text: ="Submit "
+        X: =712
+        Y: =641
+        ZIndex: =13
+
+    Button2_1 As button:
+        OnSelect: |-
+            =Collect(CityPopulations,{Country: TextInput1.Text, City: TextInput2.Text, Population: Value(TextInput3.Text)})
+        Text: ="New"
+        X: =706
+        Y: =696
+        ZIndex: =14
+
+    Button2_2 As button:
+        DisplayMode: =If(IsBlank(varRecord),DisplayMode.Disabled,DisplayMode.Edit)
+        OnSelect: =Set(varRecord,Blank())
+        Text: ="Clear"
+        X: =983
+        Y: =641
+        ZIndex: =15
+
+    Button2_3 As button:
+        DisplayMode: =If(IsBlank(varRecord),DisplayMode.Disabled,DisplayMode.Edit)
+        Height: =35
+        OnSelect: =Remove(CityPopulations,varRecord)
+        Text: ="Remove"
+        X: =988
+        Y: =701
+        ZIndex: =16
+
