@@ -87,7 +87,6 @@
       "smartemaildatacard": false,
       "supportcolumnnamesasidentifiers": false,
       "tabledoesntwraprecords": true,
-      "untypedobject": true,
       "usedisplaynamemetadata": true,
       "useenforcesavedatalimits": true,
       "useexperimentalcdsconnector": true,
@@ -95,7 +94,7 @@
       "useguiddatatypes": true,
       "usenonblockingonstartrule": true,
       "webbarcodescanner": false,
-      "zeroalltabindexes": true
+      "zeroalltabindexes": false
     },
     "Author": "",
     "BindingErrorCount": 0,
@@ -114,7 +113,7 @@
     "Id": "6b84d1e9-2130-4d92-9c40-a9721d0f761b",
     "InstrumentationKey": "",
     "LocalDatabaseReferences": "{}",
-    "ManualOfflineProfileId": null,
+    "ManualOfflineProfileId": "",
     "Name": "Practice app",
     "OriginatingVersion": "1.335",
     "ParserErrorCount": 0,
@@ -132,6 +131,7 @@
     "UserLocale": "en-US"
   },
   "ScreenOrder": [
-    "Screen1"
+    "Screen1",
+    "Screen2"
   ]
 }

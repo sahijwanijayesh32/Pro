@@ -1,1 +1,38 @@
-{}
+{
+  "0c309a5f-6b04-4339-ba78-fcf6c93dedee": {
+    "connectionRef": {
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1659/1.0.1659.3460/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365"
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0c309a5f-6b04-4339-ba78-fcf6c93dedee"
+  },
+  "20f485c8-5a7c-4878-8ea5-81db2fdab64c": {
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/henryorsborn/partial-builds/asev3migrations-with-resourceTemplate/1.0.1653.3414/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {
+      "https://xebiagroup.sharepoint.com/sites/Jayesh": {
+        "dataSources": {
+          "Buttons": {
+            "tableName": "04ae1668-c7b5-4e4f-8c7a-7201a558ba06"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Buttons"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "20f485c8-5a7c-4878-8ea5-81db2fdab64c"
+  }
+}

@@ -162,7 +162,7 @@ Screen1 As screen:
 
     Button2 As button:
         OnSelect: |-
-            =Patch(CityPopulations, varRecord, {Country: TextInput1.Text, City: TextInput2, Population: Value(TextInput3.Text)})
+            =Patch(CityPopulations, varRecord, {Country: TextInput1.Text, City: TextInput2.Text, Population: Value(TextInput3.Text)})
         Text: ="Submit "
         X: =712
         Y: =641
